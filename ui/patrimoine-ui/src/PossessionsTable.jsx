@@ -13,7 +13,6 @@ const PossessionsTable = () => {
     const [resultat, setResultat] = useState('');
     const [survieValue, setSurvieValue] = useState('');
     const [alternanceValue, setAlternanceValue] = useState('');
-    const [calculatedDate, setCalculatedDate] = useState('');
 
     useEffect(() => {
         async function fetchData() {
@@ -60,17 +59,15 @@ const PossessionsTable = () => {
             if (isNaN(valeur)) {
                 setResultat('Les valeurs saisies ne sont pas valides!');
             } else {
-                setResultat(`Le patrimoine de ${patrimoine.possesseur.nom} à la date ${date.toLocaleDateString()} est de : ${valeur}`);
+                setResultat(`Le patrimoine de ${patrimoine.possesseur.nom} à la date ${date.toLocaleDateString()} est de : ${valeur} Ar`);
                 
-                // Stocker la date calculée
-                setCalculatedDate(date.toLocaleDateString());
-
                 // Calcul des valeurs spécifiques pour Survie et Alternance
                 const survie = possessions.find(p => p.libelle === 'Survie');
                 const alternance = possessions.find(p => p.libelle === 'Alternance');
 
-                setSurvieValue(survie ? survie.getValeur(date) : 'Non défini');
-                setAlternanceValue(alternance ? alternance.getValeur(date) : 'Non défini');
+                // Calcul des valeurs actuelles en utilisant la date de fin
+                setSurvieValue(survie ? `${survie.getValeur(date)} Ar` : 'Non défini');
+                setAlternanceValue(alternance ? `${alternance.getValeur(date)} Ar` : 'Non défini');
             }
         } else {
             setResultat('Date de fin ou patrimoine non défini');
@@ -79,8 +76,8 @@ const PossessionsTable = () => {
 
     return (
         <div>
-            <h3>Propriétaire : {patrimoine?.possesseur.nom}</h3>
-            <Table striped bordered hover>
+            <h3 id='guy'>Propriétaire : {patrimoine?.possesseur.nom}</h3>
+            <Table id='table' striped bordered hover>
                 <thead>
                     <tr>
                         <th>Libellé</th>
@@ -95,11 +92,11 @@ const PossessionsTable = () => {
                     {possessions.map((possession, index) => (
                         <tr key={index}>
                             <td>{possession.libelle}</td>
-                            <td>{possession.valeurConstante || possession.valeur}</td>
+                            <td>{possession.valeurConstante ? `${possession.valeurConstante} Ar` : `${possession.valeur} Ar`}</td>
                             <td>{new Date(possession.dateDebut).toLocaleDateString()}</td>
-                            <td>{calculatedDate || (possession.dateFin ? new Date(possession.dateFin).toLocaleDateString() : '')}</td>
-                            <td>{possession.tauxAmortissement}</td>
-                            <td>{possession.getValeur(new Date(dateFin || Date.now()))}</td>
+                            <td>{possession.dateFin ? new Date(possession.dateFin).toLocaleDateString() : dateFin}</td>
+                            <td>{possession.tauxAmortissement ? `${possession.tauxAmortissement} %` : ''}</td>
+                            <td>{`${possession.getValeur(new Date(dateFin || Date.now()))} Ar`}</td>
                         </tr>
                     ))}
                 </tbody>

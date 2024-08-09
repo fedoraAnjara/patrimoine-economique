@@ -1,15 +1,23 @@
+#guy{
+    margin-left: 9px;
+    margin-bottom: 20px;
+}
 #dateFinContainer{
     display: flex;
     flex-direction: row;
 }
+#dateFin{
+    margin-left: 2px;
+}
 #btn{
-    margin-left: 5px;
+    margin-left: 8px;
 }
 #btn:hover{
     background-color: rgba(0, 89, 255, 0.774);
 }
 #resultat{
     text-align: center;
+    font-weight: 400;
     height: 8vh;
     margin-top: 3ex;
     background-color: rgba(129, 129, 129, 0.719);
@@ -17,4 +25,7 @@
 #title{
     text-align: center;
     margin: 10px 0;
+}
+#table{
+    text-align: center;
 }
