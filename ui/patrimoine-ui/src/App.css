@@ -1,0 +1,20 @@
+#dateFinContainer{
+    display: flex;
+    flex-direction: row;
+}
+#btn{
+    margin-left: 5px;
+}
+#btn:hover{
+    background-color: rgba(0, 89, 255, 0.774);
+}
+#resultat{
+    text-align: center;
+    height: 8vh;
+    margin-top: 3ex;
+    background-color: rgba(129, 129, 129, 0.719);
+}
+#title{
+    text-align: center;
+    margin: 10px 0;
+}

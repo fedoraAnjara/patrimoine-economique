@@ -25,6 +25,6 @@ export default class Possession {
     var raison = differenceDate.year + differenceDate.month / 12 + differenceDate.day / 365;
 
     const result = this.valeur - this.valeur *(raison * this.tauxAmortissement / 100);
-    return result;
+    return Math.round(result);
   }
 }
