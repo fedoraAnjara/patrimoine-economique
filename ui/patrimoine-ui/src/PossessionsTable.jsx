@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Table, Form, Button } from 'react-bootstrap';
 import Patrimoine from '../../../models/Patrimoine.js';
 import Personne from '../../../models/Personne.js';
-import Argent from '../../../models/possessions/Argent.js';
 import BienMateriel from '../../../models/possessions/BienMateriel.js';
 import Flux from '../../../models/possessions/Flux.js';
 
@@ -11,8 +10,6 @@ const PossessionsTable = () => {
     const [dateFin, setDateFin] = useState('');
     const [patrimoine, setPatrimoine] = useState(null);
     const [resultat, setResultat] = useState('');
-    const [survieValue, setSurvieValue] = useState('');
-    const [alternanceValue, setAlternanceValue] = useState('');
 
     useEffect(() => {
         async function fetchData() {
@@ -60,14 +57,6 @@ const PossessionsTable = () => {
                 setResultat('Les valeurs saisies ne sont pas valides!');
             } else {
                 setResultat(`Le patrimoine de ${patrimoine.possesseur.nom} à la date ${date.toLocaleDateString()} est de : ${valeur} Ar`);
-                
-                // Calcul des valeurs spécifiques pour Survie et Alternance
-                const survie = possessions.find(p => p.libelle === 'Survie');
-                const alternance = possessions.find(p => p.libelle === 'Alternance');
-
-                // Calcul des valeurs actuelles en utilisant la date de fin
-                setSurvieValue(survie ? `${survie.getValeur(date)} Ar` : 'Non défini');
-                setAlternanceValue(alternance ? `${alternance.getValeur(date)} Ar` : 'Non défini');
             }
         } else {
             setResultat('Date de fin ou patrimoine non défini');
@@ -93,10 +82,14 @@ const PossessionsTable = () => {
                         <tr key={index}>
                             <td>{possession.libelle}</td>
                             <td>{possession instanceof Flux ? '0 Ar' : `${possession.valeur} Ar`}</td>
+                            {/**Initialise le flux a 0 et biens materiel a sa valeur iniitiale */}
                             <td>{new Date(possession.dateDebut).toLocaleDateString()}</td>
                             <td>{possession.dateFin ? new Date(possession.dateFin).toLocaleDateString() : dateFin}</td>
                             <td>{possession.tauxAmortissement ? `${possession.tauxAmortissement} %` : ''}</td>
-                            <td>{`${possession.getValeur(new Date(dateFin || Date.now()))} Ar`}</td>
+                            <td>{`${possession.getValeur(new Date(dateFin || Date.now()))} Ar`}</td> 
+                            {/** récuperera et affichera directement la valeur actuelle 
+                             * en se basant sur la date d'aujourd'hui mais sera modifiée 
+                             * en fonction de dateFin selectionnée  */}
                         </tr>
                     ))}
                 </tbody>
