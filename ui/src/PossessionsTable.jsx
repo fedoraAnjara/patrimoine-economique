@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Table, Form, Button } from 'react-bootstrap';
-import Patrimoine from '../../../models/Patrimoine.js';
-import Personne from '../../../models/Personne.js';
-import BienMateriel from '../../../models/possessions/BienMateriel.js';
-import Flux from '../../../models/possessions/Flux.js';
+import Patrimoine from '../../models/Patrimoine.js';
+import Personne from '../../models/Personne.js';
+import BienMateriel from '../../models/possessions/BienMateriel.js';
+import Flux from '../../models/possessions/Flux.js';
 
 const PossessionsTable = () => {
     const [possessions, setPossessions] = useState([]);
