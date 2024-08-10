@@ -30,7 +30,7 @@ const PossessionsTable = () => {
                             return new BienMateriel(personne, p.libelle, p.valeur, new Date(p.dateDebut), p.dateFin ? new Date(p.dateFin) : null, p.tauxAmortissement);
                         case 'Alternance':
                         case 'Survie':
-                            return new Flux(personne, p.libelle, p.valeur, new Date(p.dateDebut), p.dateFin ? new Date(p.dateFin) : null, p.tauxAmortissement, p.jour);
+                            return new Flux(personne, p.libelle, p.valeurConstante, new Date(p.dateDebut), p.dateFin ? new Date(p.dateFin) : null, p.tauxAmortissement, p.jour);
                         default:
                             return null;
                     }
@@ -92,7 +92,7 @@ const PossessionsTable = () => {
                     {possessions.map((possession, index) => (
                         <tr key={index}>
                             <td>{possession.libelle}</td>
-                            <td>{possession.valeurConstante ? `${possession.valeurConstante} Ar` : `${possession.valeur} Ar`}</td>
+                            <td>{possession instanceof Flux ? '0 Ar' : `${possession.valeur} Ar`}</td>
                             <td>{new Date(possession.dateDebut).toLocaleDateString()}</td>
                             <td>{possession.dateFin ? new Date(possession.dateFin).toLocaleDateString() : dateFin}</td>
                             <td>{possession.tauxAmortissement ? `${possession.tauxAmortissement} %` : ''}</td>
@@ -117,22 +117,6 @@ const PossessionsTable = () => {
                     type="text"
                     placeholder='Résultat'
                     value={resultat}
-                    readOnly
-                />
-            </Form.Group>
-            <Form.Group controlId="survieValue">
-                <Form.Control
-                    type="text"
-                    placeholder='Valeur Survie'
-                    value={survieValue}
-                    readOnly
-                />
-            </Form.Group>
-            <Form.Group controlId="alternanceValue">
-                <Form.Control
-                    type="text"
-                    placeholder='Valeur Alternance'
-                    value={alternanceValue}
                     readOnly
                 />
             </Form.Group>
