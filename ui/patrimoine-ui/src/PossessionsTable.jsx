@@ -51,6 +51,13 @@ const PossessionsTable = () => {
                 setResultat('Format de Date non valide!');
                 return;
             }
+        
+                // Vérifier si la dateFin est inférieure à la dateDebut pour chaque possession
+            const possessionWithInvalidDate = possessions.find(possession => date < new Date(possession.dateDebut));
+            if (possessionWithInvalidDate) {
+                setResultat("Le calcul du patrimoine ne peux pas se faire car certaines possessions ne sont pas encore aquis a cette date.");
+                return;
+            }
 
             const valeur = patrimoine.getValeur(date);
             if (isNaN(valeur)) {
