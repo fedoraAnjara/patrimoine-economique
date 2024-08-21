@@ -14,8 +14,8 @@ const PossessionsTable = () => {
     useEffect(() => {
         async function fetchData() {
             try {
-                const response = await fetch('/data.json');
-                const result = await response.json();
+                const response = await fetch('/api/data');
+                const result = await response.json;
 
                 const personneData = result.find(item => item.model === 'Personne').data;
                 const patrimoineData = result.find(item => item.model === 'Patrimoine').data;
