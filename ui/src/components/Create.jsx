@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Container, Button, Form, Card } from "react-bootstrap";
 import DatePicker from "react-datepicker";
 import 'react-datepicker/dist/react-datepicker.css';
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import '../assets/Create.css'; // Assure-toi d'ajouter le CSS
 
 const Create = () => {
@@ -51,6 +51,7 @@ const Create = () => {
 
   return (
     <Container className="create-container">
+      <Link to="/possession" className="btn btn-primary">x</Link>
       <Card className="mb-4 shadow-sm">
         <Card.Body>
           <h1 className="text-center mb-4">Créer une nouvelle possession</h1>

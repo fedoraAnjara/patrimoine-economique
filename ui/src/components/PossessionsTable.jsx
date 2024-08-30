@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Container, Button, Table } from "react-bootstrap";
 import { useNavigate, Link } from "react-router-dom";
 import Possession from "../../../models/possessions/Possession";
-import '../assets/PossessionsTable.css'; // Assure-toi d'ajouter le CSS
+import '../assets/PossessionsTable.css';
 
 const PossessionPage = () => {
   const [possessions, setPossessions] = useState([]);
@@ -107,7 +107,7 @@ const PossessionPage = () => {
                   Éditer
                 </Button>
                 <Button
-                  className="btn-close"
+                  className="btn-clos"
                   onClick={() => handleClose(possession.libelle)}
                 >
                   Clôturer

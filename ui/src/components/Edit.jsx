@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Form, Button, Container } from "react-bootstrap";
 import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css"; // Importer le style du date picker
-import { useParams, useNavigate } from "react-router-dom";
+import "react-datepicker/dist/react-datepicker.css"; 
+import { useParams, useNavigate, Link } from "react-router-dom";
 
 const Edit = () => {
   const { libelle } = useParams();
@@ -50,11 +50,12 @@ const Edit = () => {
   };
 
   const handleFocus = (e) => {
-    e.target.select(); // Sélectionner automatiquement tout le texte lors du focus
+    e.target.select();
   };
 
   return (
     <Container>
+      <Link to="/possession" className="btn btn-primary">x</Link>
       <h1>Éditer la Possession</h1>
       <Form onSubmit={handleSubmit}>
         <Form.Group controlId="formLibelle">
@@ -64,7 +65,7 @@ const Edit = () => {
             name="libelle"
             value={possession.libelle}
             onChange={handleChange}
-            onFocus={handleFocus} // Ajouter l'événement onFocus ici
+            onFocus={handleFocus}
             placeholder="Entrez le libellé"
           />
         </Form.Group>

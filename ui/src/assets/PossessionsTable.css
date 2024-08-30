@@ -27,14 +27,15 @@
   background-color: #0a1e31;
 }
 
-.btn-close {
+.btn-clos {
     width: fit-content;
-    height: 25px;
-  background-color: #ffffff;
+    height: fit-content;
+  background-color: #c70000;
   border: 1px solid #fc0e0e;
-  color: #dc3545;
+  color: #ffffff;
 }
 
-.btn-close:hover {
-  background-color: #f8d7da;
+.btn-clos:hover {
+  background-color: #9b000d;
+  border: 1px solid #fc0e0e;
 }

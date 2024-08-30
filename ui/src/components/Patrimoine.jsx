@@ -12,6 +12,7 @@ import {
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { Link } from "react-router-dom";
+import '../assets/Patrimoine.css'; 
 
 ChartJS.register(
   CategoryScale,
@@ -19,7 +20,7 @@ ChartJS.register(
   BarElement,
   Title,
   Tooltip,
-  Legend,
+  Legend
 );
 
 const Patrimoine = () => {
@@ -51,16 +52,15 @@ const Patrimoine = () => {
       const result = await response.json();
       console.log("Données reçues:", result);
 
-      const label = Object.keys(result.data);
-      alert(label[0]);
-      const value = Object.values(result.data);
+      const labels = Object.keys(result.data);
+      const values = Object.values(result.data);
 
       const chartData = {
-        labels: label,
+        labels,
         datasets: [
           {
             label: "Valeur du Patrimoine",
-            data: value,
+            data: values,
             backgroundColor: "rgba(75, 192, 192, 0.2)",
             borderColor: "rgb(75, 192, 192)",
             borderWidth: 1,
@@ -75,49 +75,64 @@ const Patrimoine = () => {
   };
 
   return (
-    <div>
-      <h2>Graphique du Patrimoine</h2>
-      <DatePicker
-        selected={dateDebut}
-        onChange={(date) => setDateDebut(date)}
-      />
-      <DatePicker selected={dateFin} onChange={(date) => setDateFin(date)} />
-      <select value={jour} onChange={(e) => setJour(e.target.value)}>
-        {[...Array(31).keys()].map((day) => (
-          <option key={day + 1} value={day + 1}>
-            {day + 1}
-          </option>
-        ))}
-      </select>
-      <button onClick={handleGetValeur}>Valider</button>
-      <Bar
-        data={data}
-        options={{
-          responsive: true,
-          plugins: {
-            legend: {
-              position: "top",
-            },
-            tooltip: {
-              callbacks: {
-                label: function (context) {
-                  return `${context.dataset.label}: ${context.raw}`;
+    <div className="patrimoine-container">
+      <h2 className="patrimoine-header">Graphique du Patrimoine</h2>
+      <div className="date-picker-container">
+        <DatePicker
+          selected={dateDebut}
+          onChange={(date) => setDateDebut(date)}
+          className="date-picker"
+        />
+        <DatePicker
+          selected={dateFin}
+          onChange={(date) => setDateFin(date)}
+          className="date-picker"
+        />
+        <select
+          value={jour}
+          onChange={(e) => setJour(e.target.value)}
+          className="select-day"
+        >
+          {[...Array(31).keys()].map((day) => (
+            <option key={day + 1} value={day + 1}>
+              {day + 1}
+            </option>
+          ))}
+        </select>
+      </div>
+      <button className="btn-submit" onClick={handleGetValeur}>
+        Valider
+      </button>
+      <div className="chart-container">
+        <Bar
+          data={data}
+          options={{
+            responsive: true,
+            plugins: {
+              legend: {
+                position: "top",
+              },
+              tooltip: {
+                callbacks: {
+                  label: function (context) {
+                    return `${context.dataset.label}: ${context.raw}`;
+                  },
                 },
               },
             },
-          },
-          scales: {
-            x: {
-              stacked: true,
+            scales: {
+              x: {
+                stacked: true,
+              },
+              y: {
+                stacked: true,
+              },
             },
-            y: {
-              stacked: true,
-            },
-          },
-        }}
-      />
-      <Link to="/" className="btn btn-primary mb-3">
-        Retourner a l'acceuil
+          }}
+        />
+      </div>
+      <Link to="/" className="btn-return">
+        Retourner à l'accueil
       </Link>
     </div>
   );
