@@ -5,6 +5,8 @@ import App from "./components/Header";
 import Patrimoine from "./components/Patrimoine";
 import "bootstrap/dist/css/bootstrap.min.css";
 import PossessionsTable from "./components/PossessionsTable";
+import Create from "./components/Create";
+import Edit from "./components/Edit";
 
 const route = createBrowserRouter([
   {
@@ -18,6 +20,14 @@ const route = createBrowserRouter([
   {
     path: "/possession",
     element: <PossessionsTable />,
+  },
+  {
+    path: "/create",
+    element: <Create />,
+  },
+  {
+    path: "/edit/:libelle",
+    element: <Edit />,
   },
 ]);
 

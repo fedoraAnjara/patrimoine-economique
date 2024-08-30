@@ -41,7 +41,7 @@ const Patrimoine = () => {
 
   const handleGetValeur = async () => {
     try {
-      const response = await fetch("http://localhost:3000/patrimoine/range", {
+      const response = await fetch("http://localhost:3003/patrimoine/range", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -51,16 +51,15 @@ const Patrimoine = () => {
       const result = await response.json();
       console.log("Données reçues:", result);
 
-      const label = Object.keys(result.data);
-      alert(label[0]);
-      const value = Object.values(result.data);
+      const labels = Object.keys(result.data);
+      const values = Object.values(result.data);
 
       const chartData = {
-        labels: label,
+        labels: labels,
         datasets: [
           {
             label: "Valeur du Patrimoine",
-            data: value,
+            data: values,
             backgroundColor: "rgba(75, 192, 192, 0.2)",
             borderColor: "rgb(75, 192, 192)",
             borderWidth: 1,
@@ -117,7 +116,7 @@ const Patrimoine = () => {
         }}
       />
       <Link to="/" className="btn btn-primary mb-3">
-        Retourner a l'acceuil
+        Retourner à l'accueil
       </Link>
     </div>
   );

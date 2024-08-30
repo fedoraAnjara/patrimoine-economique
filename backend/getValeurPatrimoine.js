@@ -42,6 +42,3 @@ export default async function getValeurPatrimoine(date) {
   const patrimoine = new Patrimoine(possesseur, possessionList);
   return patrimoine.getValeur(date);
 }
-// list[1].data.possessions.push(newPossession);
-// const status = await writeFile("../data/data.json", data);
-// return status;
