@@ -1,0 +1,29 @@
+.create-container {
+    background-color: #f8f9fa;
+    padding: 20px;
+  }
+  
+  .card {
+    border-radius: 8px;
+    border: none;
+  }
+  
+  .input-custom {
+    border-color: #80650e;
+  }
+  
+  .input-custom:focus {
+    border-color: #010c1d;
+    box-shadow: 0 0 0 0.2rem rgba(0, 12, 29, 0.25);
+  }
+  
+  .btn-custom {
+    background-color: #80650e;
+    color: white;
+    border: none;
+  }
+  
+  .btn-custom:hover {
+    background-color: #6c4f0c;
+  }
+  

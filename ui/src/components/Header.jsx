@@ -9,7 +9,7 @@ const App = () => {
     <div>
       <Navbar bg="primary" variant="dark" expand="lg" className="navbar-custom">
         <Container>
-          <Navbar.Brand href="/">PatrimoineApp</Navbar.Brand>
+          <Navbar.Brand href="/">PatrimonyApp</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ml-auto">

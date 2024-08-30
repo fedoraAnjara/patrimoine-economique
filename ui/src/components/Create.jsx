@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import "react-datepicker/dist/react-datepicker.css";
-import { Container, Button, Form } from "react-bootstrap";
+import { Container, Button, Form, Card } from "react-bootstrap";
 import DatePicker from "react-datepicker";
+import 'react-datepicker/dist/react-datepicker.css';
 import { useNavigate } from "react-router-dom";
+import '../assets/Create.css'; // Assure-toi d'ajouter le CSS
 
 const Create = () => {
   const [libelle, setLibelle] = useState("");
@@ -14,7 +15,7 @@ const Create = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const formattedValeur = parseInt(valeur, 10); // Supprime les zéros initiaux
+    const formattedValeur = parseInt(valeur, 10);
     const formattedTauxAmortissement = tauxAmortissement
       ? parseInt(tauxAmortissement, 10)
       : null;
@@ -49,53 +50,60 @@ const Create = () => {
   };
 
   return (
-    <Container>
-      <h1>Créer une nouvelle possession</h1>
-      <Form onSubmit={handleSubmit}>
-        <Form.Group controlId="libelle">
-          <Form.Label>Libellé</Form.Label>
-          <Form.Control
-            type="text"
-            value={libelle}
-            onChange={(e) => setLibelle(e.target.value)}
-            required
-          />
-        </Form.Group>
+    <Container className="create-container">
+      <Card className="mb-4 shadow-sm">
+        <Card.Body>
+          <h1 className="text-center mb-4">Créer une nouvelle possession</h1>
+          <Form onSubmit={handleSubmit}>
+            <Form.Group controlId="libelle">
+              <Form.Label>Libellé</Form.Label>
+              <Form.Control
+                type="text"
+                value={libelle}
+                onChange={(e) => setLibelle(e.target.value)}
+                required
+                className="input-custom"
+              />
+            </Form.Group>
 
-        <Form.Group controlId="valeur">
-          <Form.Label>Valeur</Form.Label>
-          <Form.Control
-            type="number"
-            value={valeur}
-            onChange={(e) => setValeur(e.target.value)}
-            required
-          />
-        </Form.Group>
+            <Form.Group controlId="valeur">
+              <Form.Label>Valeur</Form.Label>
+              <Form.Control
+                type="number"
+                value={valeur}
+                onChange={(e) => setValeur(e.target.value)}
+                required
+                className="input-custom"
+              />
+            </Form.Group>
 
-        <Form.Group controlId="dateDebut">
-          <Form.Label>Date Début</Form.Label>
-          <DatePicker
-            selected={dateDebut}
-            onChange={(date) => setDateDebut(date)}
-            className="form-control"
-            dateFormat="yyyy-MM-dd"
-          />
-        </Form.Group>
+            <Form.Group controlId="dateDebut">
+              <Form.Label>Date Début</Form.Label>
+              <DatePicker
+                selected={dateDebut}
+                onChange={(date) => setDateDebut(date)}
+                className="form-control input-custom"
+                dateFormat="yyyy-MM-dd"
+              />
+            </Form.Group>
 
-        <Form.Group controlId="tauxAmortissement">
-          <Form.Label>Taux d'Amortissement</Form.Label>
-          <Form.Control
-            type="number"
-            value={tauxAmortissement}
-            onChange={(e) => setTauxAmortissement(e.target.value)}
-            placeholder=""
-          />
-        </Form.Group>
+            <Form.Group controlId="tauxAmortissement">
+              <Form.Label>Taux d'Amortissement</Form.Label>
+              <Form.Control
+                type="number"
+                value={tauxAmortissement}
+                onChange={(e) => setTauxAmortissement(e.target.value)}
+                placeholder=""
+                className="input-custom"
+              />
+            </Form.Group>
 
-        <Button variant="primary" type="submit">
-          Créer
-        </Button>
-      </Form>
+            <Button variant="primary" type="submit" className="btn-custom">
+              Créer
+            </Button>
+          </Form>
+        </Card.Body>
+      </Card>
     </Container>
   );
 };

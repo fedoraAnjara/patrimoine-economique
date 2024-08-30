@@ -51,15 +51,16 @@ const Patrimoine = () => {
       const result = await response.json();
       console.log("Données reçues:", result);
 
-      const labels = Object.keys(result.data);
-      const values = Object.values(result.data);
+      const label = Object.keys(result.data);
+      alert(label[0]);
+      const value = Object.values(result.data);
 
       const chartData = {
-        labels: labels,
+        labels: label,
         datasets: [
           {
             label: "Valeur du Patrimoine",
-            data: values,
+            data: value,
             backgroundColor: "rgba(75, 192, 192, 0.2)",
             borderColor: "rgb(75, 192, 192)",
             borderWidth: 1,
@@ -116,7 +117,7 @@ const Patrimoine = () => {
         }}
       />
       <Link to="/" className="btn btn-primary mb-3">
-        Retourner à l'accueil
+        Retourner a l'acceuil
       </Link>
     </div>
   );

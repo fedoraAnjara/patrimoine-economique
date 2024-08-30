@@ -1,0 +1,40 @@
+.possessions-table-container {
+  background-color: #f8f9fa;
+  padding: 20px;
+}
+
+.btn-custom {
+  background-color: #80650e;
+  color: white;
+}
+
+.btn-custom:hover {
+  background-color: #6c4f0c;
+}
+
+.thead-custom {
+  background-color: #010c1d;
+  color: white;
+}
+
+.btn-edit {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  color: #000;
+}
+
+.btn-edit:hover {
+  background-color: #0a1e31;
+}
+
+.btn-close {
+    width: fit-content;
+    height: 25px;
+  background-color: #ffffff;
+  border: 1px solid #fc0e0e;
+  color: #dc3545;
+}
+
+.btn-close:hover {
+  background-color: #f8d7da;
+}
