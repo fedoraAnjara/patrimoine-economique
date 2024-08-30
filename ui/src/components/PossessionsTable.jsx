@@ -160,6 +160,7 @@ const PossessionsTable = () => {
                   ? `${possession.tauxAmortissement} %`
                   : ""}
               </td>
+              <td>{`${possession.getValeur(new Date(dateFin || Date.now()))} Ar`}</td>
               <td>
                 <Button
                   onClick={() => {
