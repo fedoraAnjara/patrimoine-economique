@@ -1,6 +1,14 @@
 .create-container {
     background-color: #f8f9fa;
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+ 
+  .cardContain{
+    margin-top: 10px;
   }
   
   .card {
@@ -27,3 +35,22 @@
     background-color: #6c4f0c;
   }
   
+  .clsBtn{
+    border-radius: 47%;
+    background-color: gainsboro;
+    width: fit-content;
+    margin: 15px;
+
+  }
+  .clsBtn:hover{
+    background-color: #d1a71cbe;
+  }
+  .datePicker{
+    margin-left: 15px;
+  }
+  .formContain{
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }

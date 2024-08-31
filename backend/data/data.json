@@ -26,109 +26,11 @@
           "possesseur": {
             "nom": "John Doe"
           },
-          "libelle": "Alternance",
-          "valeur": 0,
-          "dateDebut": "2022-12-31T21:00:00.000Z",
-          "dateFin": "2024-08-30T19:55:54.667Z",
-          "tauxAmortissement": null,
-          "jour": 1,
-          "valeurConstante": 500000
-        },
-        {
-          "possesseur": {
-            "nom": "John Doe"
-          },
-          "libelle": "Survie",
-          "valeur": 0,
-          "dateDebut": "2022-12-31T21:00:00.000Z",
-          "dateFin": "2024-08-30T20:02:22.234Z",
-          "tauxAmortissement": null,
-          "jour": 2,
-          "valeurConstante": -300000
-        },
-        {
-          "possesseur": {
-            "nom": "John Doe"
-          },
-          "libelle": "MacBook Pro",
-          "valeur": 4000000,
-          "dateDebut": "2023-12-25T00:00:00.000Z",
-          "dateFin": null,
-          "tauxAmortissement": 5
-        },
-        {
-          "possesseur": {
-            "nom": "John Doe"
-          },
-          "libelle": "Alternance",
-          "valeur": 0,
-          "dateDebut": "2022-12-31T21:00:00.000Z",
-          "dateFin": null,
-          "tauxAmortissement": null,
-          "jour": 1,
-          "valeurConstante": 500000
-        },
-        {
-          "possesseur": {
-            "nom": "John Doe"
-          },
-          "libelle": "Survie",
-          "valeur": 0,
-          "dateDebut": "2022-12-31T21:00:00.000Z",
-          "dateFin": null,
-          "tauxAmortissement": null,
-          "jour": 2,
-          "valeurConstante": -300000
-        },
-        {
-          "possesseur": {
-            "nom": "John Doe"
-          },
-          "libelle": "maison",
-          "valeur": 30000000,
-          "dateDebut": "2022-12-31T21:00:00.000Z",
-          "dateFin": "2024-08-30T18:41:52.822Z",
-          "tauxAmortissement": 1
-        },
-        {
-          "possesseur": {
-            "nom": "John Doe"
-          },
-          "libelle": "dd",
-          "valeur": 78,
-          "dateDebut": "2024-07-29T18:24:02.000Z",
-          "dateFin": "2024-08-30T18:41:53.229Z",
-          "tauxAmortissement": null
-        },
-        {
-          "possesseur": {
-            "nom": "John Doe"
-          },
-          "libelle": "mandeha be",
-          "valeur": 5,
-          "dateDebut": "2024-01-11T19:41:05.000Z",
-          "dateFin": "2024-08-30T18:41:53.574Z",
-          "tauxAmortissement": null
-        },
-        {
-          "possesseur": {
-            "nom": "John Doe"
-          },
-          "libelle": "rgf",
-          "valeur": 50000,
-          "dateDebut": "2024-08-30T19:55:58.937Z",
-          "dateFin": "2024-08-30T19:56:09.304Z",
-          "tauxAmortissement": null
-        },
-        {
-          "possesseur": {
-            "nom": "John Doe"
-          },
-          "libelle": "andrana",
-          "valeur": 5,
-          "dateDebut": "2024-08-30T20:14:08.370Z",
-          "dateFin": "2024-08-30T20:17:20.924Z",
-          "tauxAmortissement": null
+          "libelle": "etude",
+          "valeur": 700000,
+          "dateDebut": "2024-06-11T03:49:15.000Z",
+          "dateFin": "2024-08-31T03:50:19.505Z",
+          "tauxAmortissement": 0
         }
       ]
     }

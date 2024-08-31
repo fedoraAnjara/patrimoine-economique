@@ -33,7 +33,7 @@ const Patrimoine = () => {
       {
         label: "Valeur du Patrimoine",
         data: [],
-        backgroundColor: "rgba(75, 192, 192, 0.2)",
+        backgroundColor: "#a07e0d",
         borderColor: "rgb(75, 192, 192)",
         borderWidth: 1,
       },
@@ -61,7 +61,7 @@ const Patrimoine = () => {
           {
             label: "Valeur du Patrimoine",
             data: values,
-            backgroundColor: "rgba(75, 192, 192, 0.2)",
+            backgroundColor: "#a07e0d",
             borderColor: "rgb(75, 192, 192)",
             borderWidth: 1,
           },

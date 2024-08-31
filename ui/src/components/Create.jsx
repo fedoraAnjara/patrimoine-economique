@@ -3,7 +3,7 @@ import { Container, Button, Form, Card } from "react-bootstrap";
 import DatePicker from "react-datepicker";
 import 'react-datepicker/dist/react-datepicker.css';
 import { useNavigate, Link } from "react-router-dom";
-import '../assets/Create.css'; // Assure-toi d'ajouter le CSS
+import '../assets/Create.css';
 
 const Create = () => {
   const [libelle, setLibelle] = useState("");
@@ -51,11 +51,11 @@ const Create = () => {
 
   return (
     <Container className="create-container">
-      <Link to="/possession" className="btn btn-primary">x</Link>
-      <Card className="mb-4 shadow-sm">
+      <Card className="cardContain mb-4 shadow-sm">
+      <Link to="/possession" className="btn clsBtn">x</Link>
         <Card.Body>
           <h1 className="text-center mb-4">Créer une nouvelle possession</h1>
-          <Form onSubmit={handleSubmit}>
+          <Form className="formContain" onSubmit={handleSubmit}>
             <Form.Group controlId="libelle">
               <Form.Label>Libellé</Form.Label>
               <Form.Control
@@ -83,7 +83,7 @@ const Create = () => {
               <DatePicker
                 selected={dateDebut}
                 onChange={(date) => setDateDebut(date)}
-                className="form-control input-custom"
+                className="datePicker form-control input-custom"
                 dateFormat="yyyy-MM-dd"
               />
             </Form.Group>

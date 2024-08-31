@@ -1,16 +1,18 @@
 import React, { useState } from "react";
-import { Form, Button, Container } from "react-bootstrap";
+import { Form, Button, Container, Card } from "react-bootstrap";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css"; 
 import { useParams, useNavigate, Link } from "react-router-dom";
+import '../assets/Create.css';
+import '../assets/Edit.css';
 
 const Edit = () => {
   const { libelle } = useParams();
   const navigate = useNavigate();
 
   const [possession, setPossession] = useState({
-    libelle: libelle, // Utiliser le libellé actuel comme valeur par défaut
-    dateFin: new Date(), // Date actuelle comme valeur par défaut
+    libelle: libelle,
+    dateFin: new Date(), 
   });
 
   const handleChange = (e) => {
@@ -54,39 +56,45 @@ const Edit = () => {
   };
 
   return (
-    <Container>
-      <Link to="/possession" className="btn btn-primary">x</Link>
-      <h1>Éditer la Possession</h1>
-      <Form onSubmit={handleSubmit}>
-        <Form.Group controlId="formLibelle">
-          <Form.Label>Libellé</Form.Label>
-          <Form.Control
-            type="text"
-            name="libelle"
-            value={possession.libelle}
-            onChange={handleChange}
-            onFocus={handleFocus}
-            placeholder="Entrez le libellé"
-          />
-        </Form.Group>
+    <>
+    <Link to="/possession" className="editClsBtn clsBtn btn">x</Link>
+  <Container className="create-container">
+    <Card className="cardEditContain mb-4 shadow-sm">
+    <h1>Éditer la Possession</h1>
+    <Card.Body className="editCardBody">
+    <Form onSubmit={handleSubmit} className="editFormContainer">
+      <Form.Group controlId="formLibelle">
+        <Form.Label>Libellé</Form.Label>
+        <Form.Control
+          type="text"
+          name="libelle"
+          value={possession.libelle}
+          onChange={handleChange}
+          onFocus={handleFocus}
+          placeholder="Entrez le libellé"
+        />
+      </Form.Group>
 
-        <Form.Group controlId="formDateFin">
-          <Form.Label>Date de Fin</Form.Label>
-          <DatePicker
-            selected={possession.dateFin}
-            onChange={handleDateChange}
-            dateFormat="yyyy-MM-dd"
-            className="form-control"
-            placeholderText="Sélectionnez une date"
-          />
-        </Form.Group>
+      <Form.Group controlId="formDateFin">
+        <Form.Label>Date de Fin</Form.Label>
+        <DatePicker
+          selected={possession.dateFin}
+          onChange={handleDateChange}
+          dateFormat="yyyy-MM-dd"
+          className="datePicker form-control"
+          placeholderText="Sélectionnez une date"
+        />
+      </Form.Group>
 
-        <Button variant="primary" type="submit">
-          Mettre à jour
-        </Button>
-      </Form>
-    </Container>
-  );
+      <Button variant="primary" type="submit" className="btn-custom">
+        Mettre à jour
+      </Button>
+    </Form>
+    </Card.Body>
+    </Card>
+  </Container>
+    </>
+);
 };
 
 export default Edit;
