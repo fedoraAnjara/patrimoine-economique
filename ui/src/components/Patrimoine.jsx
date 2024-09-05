@@ -78,7 +78,7 @@ const Patrimoine = () => {
 
   const handleGetValeur = async () => {
     try {
-      const response = await fetch("https://patrimoine-economique-backend-0yha.onrender.com/patrimoine/range", {
+      const response = await fetch("https://patrimoine-economique-backend-0yha.onrender.com/patrimoine", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
