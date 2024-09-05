@@ -26,7 +26,7 @@ const Edit = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    fetch(`http://localhost:3000/possession/${libelle}`, {
+    fetch(`https://patrimoine-economique-backend-0yha.onrender.com/possession/${libelle}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

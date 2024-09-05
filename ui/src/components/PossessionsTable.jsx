@@ -13,7 +13,7 @@ const PossessionPage = () => {
   }, []);
 
   const fetchPossessions = () => {
-    fetch("http://localhost:3000/possession")
+    fetch("https://patrimoine-economique-backend-0yha.onrender.com/possession")
       .then((response) => response.json())
       .then((data) => {
         const patrimoineData = data.find((item) => item.model === "Patrimoine");
@@ -54,7 +54,7 @@ const PossessionPage = () => {
   };
 
   const handleClose = (libelle) => {
-    fetch(`http://localhost:3000/possession/${libelle}/close`, {
+    fetch(`https://patrimoine-economique-backend-0yha.onrender.com/close`, {
       method: "POST",
     })
       .then((response) => {
