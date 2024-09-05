@@ -42,7 +42,7 @@ const Patrimoine = () => {
 
   const handleGetValeur = async () => {
     try {
-      const response = await fetch("http://localhost:3003/patrimoine/range", {
+      const response = await fetch("http://localhost:3000/patrimoine/range", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
