@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Container, Button, Table } from "react-bootstrap";
 import { useNavigate, Link } from "react-router-dom";
-import Possession from "../../../models/possessions/Possession";
+import Possession from "../models/possessions/Possession";
 import '../assets/PossessionsTable.css';
 
 const PossessionPage = () => {

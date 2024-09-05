@@ -5,7 +5,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 import getValeurPatrimoine from "./getValeurPatrimoine.js";
 import getRange from "./getRange.js";
-import Possession from "../models/possessions/Possession.js";
+import Possession from "./models/possessions/Possession.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
