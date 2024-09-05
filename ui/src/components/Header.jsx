@@ -32,7 +32,7 @@ const App = () => {
               <p className="lead">
                 Gérez facilement votre patrimoine et vos possessions avec notre application intuitive.
               </p>
-              <Button variant="light" size="lg" href="/patrimoine">
+              <Button variant="light" size="lg" href="https://patrimoine-economique-backend-0yha.onrender.com/patrimoine">
                 Commencer maintenant
               </Button>
             </Col>
