@@ -54,19 +54,22 @@ const PossessionPage = () => {
   };
 
   const handleClose = (libelle) => {
+    console.log("Closing possession with libelle:", libelle); // Log libelle
     fetch(`https://patrimoine-economique-backend-0yha.onrender.com/possession/${libelle}/close`, {
       method: "POST",
     })
       .then((response) => {
         if (response.ok) {
-          console.log("Fermeture réussie:", libelle);
           fetchPossessions();
         } else {
-          response.text().then((text) => console.error("Erreur du serveur:", text));
+          console.error("Erreur lors de la fermeture de la possession.");
         }
       })
-      .catch((error) => console.error("Erreur lors de la fermeture:", error));
+      .catch((error) =>
+        console.error("Erreur lors de la fermeture de la possession:", error)
+      );
   };
+  
 
   return (
     <Container className="possessions-table-container">

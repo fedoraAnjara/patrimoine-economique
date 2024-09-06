@@ -118,26 +118,31 @@ app.put("/possession/:libelle", async (req, res) => {
 app.post("/possession/:libelle/close", async (req, res) => {
   try {
     const { libelle } = req.params;
+    console.log("Libelle reçu pour fermeture :", libelle); // Log libelle
+
     const data = await readData();
     const patrimoineData = data.find((item) => item.model === "Patrimoine");
 
     if (patrimoineData?.data?.possessions) {
       const possession = patrimoineData.data.possessions.find((p) => p.libelle === libelle);
-
       if (possession) {
         possession.dateFin = new Date();
         await writeData(data);
         res.json(possession);
       } else {
-        res.status(404).json({ error: "Possession non trouvée." });
+        console.error(`Possession avec libelle ${libelle} non trouvée.`);
+        res.status(404).json({ error: `Possession avec libelle ${libelle} non trouvée.` });
       }
     } else {
+      console.error("Aucune possession trouvée.");
       res.status(404).json({ error: "Aucune possession trouvée." });
     }
   } catch (error) {
+    console.error("Erreur lors de la fermeture de la possession :", error);
     res.status(500).json({ error: "Erreur lors de la fermeture de la possession." });
   }
 });
+
 
 // 5. POST /patrimoine/range: Get Patrimoine Range
 app.post("/patrimoine/range", (req, res) => {
