@@ -54,7 +54,7 @@ const PossessionPage = () => {
   };
 
   const handleClose = (libelle) => {
-    fetch(`https://patrimoine-economique-backend-0yha.onrender.com/possession/${libelle}/close`, {
+    fetch(`https://patrimoine-economique-backend-0yha.onrender.com/${libelle}/close`, {
       method: "POST",
     })
       .then((response) => {
