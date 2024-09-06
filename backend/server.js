@@ -5,7 +5,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 import getValeurPatrimoine from "./getValeurPatrimoine.js";
 import getRange from "./getRange.js";
-import Possession from "./models/possessions/Possession.js";
+import Possession from "../models/possessions/Possession.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -118,31 +118,26 @@ app.put("/possession/:libelle", async (req, res) => {
 app.post("/possession/:libelle/close", async (req, res) => {
   try {
     const { libelle } = req.params;
-    console.log("Libelle reçu pour fermeture :", libelle); // Log libelle
-
     const data = await readData();
     const patrimoineData = data.find((item) => item.model === "Patrimoine");
 
     if (patrimoineData?.data?.possessions) {
       const possession = patrimoineData.data.possessions.find((p) => p.libelle === libelle);
+
       if (possession) {
         possession.dateFin = new Date();
         await writeData(data);
         res.json(possession);
       } else {
-        console.error(`Possession avec libelle ${libelle} non trouvée.`);
-        res.status(404).json({ error: `Possession avec libelle ${libelle} non trouvée.` });
+        res.status(404).json({ error: "Possession non trouvée." });
       }
     } else {
-      console.error("Aucune possession trouvée.");
       res.status(404).json({ error: "Aucune possession trouvée." });
     }
   } catch (error) {
-    console.error("Erreur lors de la fermeture de la possession :", error);
     res.status(500).json({ error: "Erreur lors de la fermeture de la possession." });
   }
 });
-
 
 // 5. POST /patrimoine/range: Get Patrimoine Range
 app.post("/patrimoine/range", (req, res) => {
