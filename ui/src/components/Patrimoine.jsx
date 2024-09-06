@@ -38,16 +38,17 @@ const Patrimoine = () => {
         backgroundColor: "rgba(160, 126, 13, 0.2)",
         borderColor: "#a07e0d",
         borderWidth: 2,
-        tension: 0.4,  // Pour lisser la ligne
-        fill: true,    // Remplir la zone sous la courbe
-        pointRadius: 0, // Supprimer les points
-        pointHoverRadius: 0, // Supprimer les points au survol
+        tension: 0.4,
+        fill: true,
+        pointRadius: 0,
+        pointHoverRadius: 0,
       },
     ],
   });
   
   const [resultat, setResultat] = useState('');
 
+  // Calculer le patrimoine pour une date spécifique
   const handleCalculate = async () => {
     if (dateFin) {
       const date = new Date(dateFin);
@@ -57,11 +58,10 @@ const Patrimoine = () => {
       }
       
       try {
-        const response = await fetch(`https://patrimoine-economique-backend-0yha.onrender.com/patrimoine/${date.toISOString().split('T')[0]}`);
+        const response = await fetch(`http://localhost:3000/patrimoine/${date.toISOString().split('T')[0]}`);
         const result = await response.json();
         
         if (result.valeurPatrimoine !== undefined) {
-          // Arrondir à deux chiffres après la virgule
           const valeurArrondie = parseFloat(result.valeurPatrimoine).toFixed(2);
           setResultat(`La valeur du patrimoine à la date sélectionnée est de ${valeurArrondie} Ar`);
         } else {
@@ -76,9 +76,10 @@ const Patrimoine = () => {
     }
   };
 
+  // Récupérer la valeur pour le graphique entre deux dates
   const handleGetValeur = async () => {
     try {
-      const response = await fetch("https://patrimoine-economique-backend-0yha.onrender.com/patrimoine", {
+      const response = await fetch("http://localhost:3000/patrimoine/range", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -100,10 +101,10 @@ const Patrimoine = () => {
             backgroundColor: "rgba(160, 126, 13, 0.2)",
             borderColor: "#a07e0d",
             borderWidth: 2,
-            tension: 0.4, // Pour lisser la ligne
+            tension: 0.4,
             fill: true,
-            pointRadius: 0,  // Supprimer les points
-            pointHoverRadius: 0,  // Supprimer les points au survol
+            pointRadius: 0,
+            pointHoverRadius: 0,
           },
         ],
       };
@@ -117,6 +118,29 @@ const Patrimoine = () => {
   return (
     <div className="patrimoine-container">
       <h2 className="patrimoine-header">Graphique du Patrimoine</h2>
+      
+      {/* Picker uniquement pour la fin pour calculer le patrimoine à une date */}
+      <div className="date-picker-container">
+        <DatePicker
+          selected={dateFin}
+          onChange={(date) => setDateFin(date)}
+          className="date-picker"
+        />
+      </div>
+      
+      {/* Bouton pour calculer le patrimoine */}
+      <button className="btn-submit" onClick={handleCalculate}>
+        Calculer le patrimoine
+      </button>
+
+      <input
+        type="text"
+        value={resultat}
+        readOnly
+        placeholder="Valeur du patrimoine"
+        className="rslt resultat-input"
+      />
+
       <div className="date-picker-container">
         <DatePicker
           selected={dateDebut}
@@ -140,23 +164,12 @@ const Patrimoine = () => {
           ))}
         </select>
       </div>
-      {/* Button to calculate patrimoine */}
-      <button className="btn-submit" onClick={handleCalculate}>
-        Calculer le patrimoine
-      </button>
-
-      {/* Display patrimoine result in input with placeholder */}
-      <input
-        type="text"
-        value={resultat}
-        readOnly
-        placeholder="Valeur du patrimoine"
-        className="resultat-input"
-      />
-
+      
+      {/* Bouton pour valider et afficher le graphique */}
       <button className="btn-submit" onClick={handleGetValeur}>
         Valider
       </button>
+      
       <div className="chart-container">
         <Line
           data={data}
