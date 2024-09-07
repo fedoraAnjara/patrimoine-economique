@@ -16,7 +16,7 @@ const Edit = () => {
   });
 
   useEffect(() => {
-    fetch(`http://localhost:3000/possession/${libelle}`)
+    fetch(`https://patrimoine-economique-backend-0yha.onrender.com/possession/${libelle}`)
       .then(response => response.json())
       .then(data => {
         setPossession({
@@ -45,7 +45,7 @@ const Edit = () => {
       dateFin: possession.dateFin ? possession.dateFin.toISOString() : null, // Send null if dateFin wasn't set
     };
 
-    fetch(`http://localhost:3000/possession/${libelle}`, {
+    fetch(`https://patrimoine-economique-backend-0yha.onrender.com/possession/${libelle}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
