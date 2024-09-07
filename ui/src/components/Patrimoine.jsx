@@ -58,7 +58,7 @@ const Patrimoine = () => {
       }
       
       try {
-        const response = await fetch(`http://localhost:3000/patrimoine/${date.toISOString().split('T')[0]}`);
+        const response = await fetch(`https://patrimoine-economique-backend-0yha.onrender.com/patrimoine/${date.toISOString().split('T')[0]}`);
         const result = await response.json();
         
         if (result.valeurPatrimoine !== undefined) {
@@ -79,7 +79,7 @@ const Patrimoine = () => {
   // Récupérer la valeur pour le graphique entre deux dates
   const handleGetValeur = async () => {
     try {
-      const response = await fetch("http://localhost:3000/patrimoine/range", {
+      const response = await fetch("https://patrimoine-economique-backend-0yha.onrender.com/patrimoine", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
