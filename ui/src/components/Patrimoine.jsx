@@ -79,7 +79,7 @@ const Patrimoine = () => {
   // Récupérer la valeur pour le graphique entre deux dates
   const handleGetValeur = async () => {
     try {
-      const response = await fetch("https://patrimoine-economique-backend-0yha.onrender.com/patrimoine", {
+      const response = await fetch("https://patrimoine-economique-backend-0yha.onrender.com/patrimoine/range", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
