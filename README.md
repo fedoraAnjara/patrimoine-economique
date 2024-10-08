@@ -1,6 +1,9 @@
 # Patrimoine
+## voici l'url de mon site deployé sur render:
+_ pour le front: https://patrimoine-economique-ui-flui.onrender.com
+_ pour le backend: https://patrimoine-economique-backend-0yha.onrender.com/possession (pour acceder au json contenant la liste des possessions)
 
-## TODO: Avant 30/08/2024 08:00 GMT+3
+## TODO:
 
 - Backend (NodeJS/Express)
 
